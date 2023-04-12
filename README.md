@@ -44,5 +44,5 @@ Connects to **Bluetooth - SoC Blinky** example (by name), checks service and cha
 2. SLCP > Software Components > ICM20689 - Motion Sensor > Install
 3. SLCP > Software Components > IMU - Device driver for InvenSense ICM-20689 > Install
 4. SLCP > Software Components > IMU - Inertial Measurement Unit > Install
-5. SLCP > Software Components > Board Control > Configure > Enable Intertial Measurement Unit = true
+5. SLCP > Software Components > Board Control > Configure > Enable Inertial Measurement Unit = true
 6. Build (30m), compile, run
