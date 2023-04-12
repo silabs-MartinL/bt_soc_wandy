@@ -23,6 +23,11 @@ Connects to **Bluetooth - SoC Blinky** example (by name), checks service and cha
 * BTN0: If connected, turn off
 * BTN1: If connected, turn on 
 
+## Gestures
+
+* L: If connected, turn on
+* O: If connected, turn off
+
 ## Instructions (Switchy)
 
 2. Launcher, create **Bluetooth - SoC Empty** example

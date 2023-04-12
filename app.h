@@ -34,15 +34,6 @@
 #include "em_common.h"
 #include "sl_status.h"
 
-// Defines ---------------------------------------------------------------------
-#define APP_STATE_NONE           0
-#define APP_STATE_SCAN           1
-#define APP_STATE_SERVICE        2
-#define APP_STATE_CHARACTERISTIC 3
-#define APP_STATE_CONNECTED      4
-#define APP_STATE_OFF            5
-#define APP_STATE_ON             6
-
 /**************************************************************************//**
  * Application Init.
  *****************************************************************************/

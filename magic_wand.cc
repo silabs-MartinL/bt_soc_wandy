@@ -112,6 +112,8 @@ static void handle_output(int gesture)
                                  on_timeout_led, NULL,
                                  0,
                                  SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+    // Attempt application state change
+    app_set_state(APP_STATE_OFF);
   } else if (gesture == SLOPE_GESTURE) {
     printf("t=%lu detection=slope (L)\n", ts);
     sl_led_turn_on(&sl_led_led1);
@@ -120,6 +122,8 @@ static void handle_output(int gesture)
                                  on_timeout_led, NULL,
                                  0,
                                  SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+    // Attempt application state change
+    app_set_state(APP_STATE_ON);
   } else if (gesture == NO_GESTURE) {
     // No spell detected
   }

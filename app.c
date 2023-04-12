@@ -33,6 +33,8 @@
 #include "sl_bluetooth.h"
 #include "app.h"
 
+// Constants
+#include "constants.h"
 // Log - software component
 #include "app_log.h"
 // Simple LED - software component
@@ -43,10 +45,6 @@
 #include "sl_sleeptimer.h"
 // Magic Wand
 #include "magic_wand.h"
-
-// Defines ---------------------------------------------------------------------
-#define TICK_TIMER_MS 100
-#define AD_NAME       "Blinky Example"
 
 // Function prototypes ---------------------------------------------------------
 static bool process_scan_response(

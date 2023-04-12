@@ -18,6 +18,21 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
+// Timer for LED flashes
+#define TICK_TIMER_MS          100
+
+// Bluetooth device name to connect to
+#define AD_NAME    "Blinky Example"
+
+// Application states
+#define APP_STATE_NONE           0
+#define APP_STATE_SCAN           1
+#define APP_STATE_SERVICE        2
+#define APP_STATE_CHARACTERISTIC 3
+#define APP_STATE_CONNECTED      4
+#define APP_STATE_OFF            5
+#define APP_STATE_ON             6
+
 // The expected accelerometer data sample frequency
 #define ACCELEROMETER_FREQ      25
 #define ACCELEROMETER_CHANNELS   3

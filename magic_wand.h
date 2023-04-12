@@ -18,6 +18,9 @@
 #ifndef MAGIC_WAND_H
 #define MAGIC_WAND_H
 
+#include "em_common.h"
+#include "sl_status.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,6 +37,9 @@ void magic_wand_init(void);
  *   repeatedly from the main function.
  ******************************************************************************/
 void magic_wand_loop(void);
+
+// Implemented in app.c
+sl_status_t app_set_state(uint8_t);
 
 #ifdef __cplusplus
 }
