@@ -41,6 +41,8 @@
 #include "sl_simple_button_instances.h"
 // Sleep Timer - software component
 #include "sl_sleeptimer.h"
+// Magic Wand
+#include "magic_wand.h"
 
 // Defines ---------------------------------------------------------------------
 #define TICK_TIMER_MS 100
@@ -83,6 +85,7 @@ SL_WEAK void app_init(void)
 	// Put your additional application init code here!                         //
 	// This is called once during start-up.                                    //
 	/////////////////////////////////////////////////////////////////////////////
+	app_log("\nBluetooth - SoC Wandy\n");
 	app_log("app_init()\n");
 	// Initialise strings
 	strcpy(app_states[0], "NONE");
@@ -95,6 +98,8 @@ SL_WEAK void app_init(void)
 	// Start sleep timer
 	(void) sl_sleeptimer_start_periodic_timer_ms(&tick_timer,
 	TICK_TIMER_MS, app_tick_timer_cb, (void*) NULL, 0, 0);
+	// Initialise magic wand
+	magic_wand_init();
 }
 
 /**************************************************************************//**
@@ -107,6 +112,8 @@ SL_WEAK void app_process_action(void)
 	// This is called infinitely.                                              //
 	// Do not call blocking functions from here!                               //
 	/////////////////////////////////////////////////////////////////////////////
+	// Process magic wand
+	magic_wand_loop();
 }
 
 /**************************************************************************//**
