@@ -22,14 +22,11 @@
 #include "sl_tflite_micro_init.h"
 #include "sl_sleeptimer.h"
 #include "sl_status.h"
-#include "sl_led.h"
-#include "sl_simple_led_instances.h"
 #include <cstdio>
 
 static int input_length;
 static volatile bool inference_timeout;
 static sl_sleeptimer_timer_handle_t inference_timer;
-static sl_sleeptimer_timer_handle_t led_timer;
 static TfLiteTensor* model_input;
 static tflite::MicroInterpreter* interpreter;
 
@@ -39,15 +36,6 @@ static void on_timeout_inference(sl_sleeptimer_timer_handle_t *handle, void* dat
   (void)handle; // unused
   (void)data; // unused
   inference_timeout = true;
-}
-
-// Triggered by the led_timer
-void on_timeout_led(sl_sleeptimer_timer_handle_t *led_timer, void *data)
-{
-  (void)led_timer; // unused
-  (void)data; // unused
-  sl_led_turn_off(&sl_led_led0);
-  sl_led_turn_off(&sl_led_led1);
 }
 
 void magic_wand_init(void)
@@ -97,31 +85,12 @@ static void handle_output(int gesture)
 
   if (gesture == WING_GESTURE) {
     printf("t=%lu detection=wing (W)\n", ts);
-    sl_led_turn_on(&sl_led_led0);
-    sl_sleeptimer_start_timer_ms(&led_timer,
-                                 TOGGLE_DELAY_MS,
-                                 on_timeout_led, NULL,
-                                 0,
-                                 SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
   } else if (gesture == RING_GESTURE) {
     printf("t=%lu detection=ring (O)\n", ts);
-    sl_led_turn_on(&sl_led_led0);
-    sl_led_turn_on(&sl_led_led1);
-    sl_sleeptimer_start_timer_ms(&led_timer,
-                                 TOGGLE_DELAY_MS,
-                                 on_timeout_led, NULL,
-                                 0,
-                                 SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
     // Attempt application state change
     app_set_state(APP_STATE_OFF);
   } else if (gesture == SLOPE_GESTURE) {
     printf("t=%lu detection=slope (L)\n", ts);
-    sl_led_turn_on(&sl_led_led1);
-    sl_sleeptimer_start_timer_ms(&led_timer,
-                                 TOGGLE_DELAY_MS,
-                                 on_timeout_led, NULL,
-                                 0,
-                                 SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
     // Attempt application state change
     app_set_state(APP_STATE_ON);
   } else if (gesture == NO_GESTURE) {
