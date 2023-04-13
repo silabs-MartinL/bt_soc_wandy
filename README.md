@@ -28,21 +28,25 @@ Connects to **Bluetooth - SoC Blinky** example (by name), checks service and cha
 * L: If connected, turn on
 * O: If connected, turn off
 
-## Instructions (Switchy)
+## Instructions
 
-2. Launcher, create **Bluetooth - SoC Empty** example
-3. SLCP > Software Components > IO Stream > IO Stream: EUSART > Install > vcom
-4. SLCP > Software Components > Utility > Log > Install
-5. SLCP > Software Components > Simple LED > Install > led0, add instance: led1
-6. SLCP > Software Components > Simple Button > Install > btn0, add instance btn1 
-7. Github > copy app.c and app.h into project folder
-8. Compile and run
-
-## Instructions (Wandy)
-
-1. SLCP > Software Components > TensorFlow Lite Micro > Install, Configure > Tensor Arena Size = 8192
-2. SLCP > Software Components > ICM20689 - Motion Sensor > Install
-3. SLCP > Software Components > IMU - Device driver for InvenSense ICM-20689 > Install
-4. SLCP > Software Components > IMU - Inertial Measurement Unit > Install
-5. SLCP > Software Components > Board Control > Configure > Enable Inertial Measurement Unit = true
-6. Build (30m), compile, run
+1. Launcher, create **Bluetooth - SoC Empty** example
+2. SLCP > Software Components > IO Stream > IO Stream: EUSART > Install > vcom
+3. SLCP > Software Components > Utility > Log > Install
+4. SLCP > Software Components > Simple LED > Install > led0
+   Add instance: led1
+5. SLCP > Software Components > Simple Button > Install > btn0
+   Add instance btn1 
+6. SLCP > Software Components > TensorFlow Lite Micro > Install
+   Configure > Tensor Arena Size = 8192
+7. SLCP > Software Components > ICM20689 - Motion Sensor > Install
+8. SLCP > Software Components > IMU - Device driver for InvenSense ICM-20689 > Install
+9. SLCP > Software Components > IMU - Inertial Measurement Unit > Install
+10. SLCP > Software Components > Board Control > Configure > Enable Inertial Measurement Unit = true
+11. Github, copy the following files into the project folder:
+    - accelerometer.cc/h
+    - app.c/h
+    - constants.h
+    - magic_wand.cc/h
+    - predictor.cc/h
+12. Build (30m), compile, run
